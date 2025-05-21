@@ -1,4 +1,6 @@
-package com.alvirg.barterexchange.Domain.Entities;
+package com.alvirg.barterexchange.Features.Users;
+
+import com.alvirg.barterexchange.Shared.Domain.BaseEntity;
 
 public class UserEntity extends BaseEntity {
     private String firstName;

@@ -1,6 +1,11 @@
-package com.alvirg.barterexchange.Domain.Entities;
+package com.alvirg.barterexchange.Shared.Domain;
+import jakarta.persistence.*;
 
+@MappedSuperclass
 public abstract class BaseEntity {
+   
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     protected BaseEntity() {

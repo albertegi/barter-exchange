@@ -1,6 +1,12 @@
-package com.alvirg.barterexchange.Domain.Entities;
+package com.alvirg.barterexchange.Features.Listings;
 
+import com.alvirg.barterexchange.Shared.Domain.BaseEntity;
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "listings")
 public class ListingEntity extends BaseEntity {
+    @Column(nullable = false)
     private String name;
     private String description;
     private String condition;

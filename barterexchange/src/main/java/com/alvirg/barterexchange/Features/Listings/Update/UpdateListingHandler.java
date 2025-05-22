@@ -1,8 +1,13 @@
 package com.alvirg.barterexchange.Features.Listings.Update;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.alvirg.barterexchange.Features.Listings.ListingEntity;
 import com.alvirg.barterexchange.Features.Listings.ListingRepository;
 
+@RestController
+@RequestMapping("/api/listings")
 public class UpdateListingHandler {
     private final ListingRepository repository;
 

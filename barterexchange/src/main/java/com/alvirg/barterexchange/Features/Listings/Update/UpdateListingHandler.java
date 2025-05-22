@@ -1,5 +1,7 @@
 package com.alvirg.barterexchange.Features.Listings.Update;
 
+import org.springframework.security.access.method.P;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +16,8 @@ public class UpdateListingHandler {
     public UpdateListingHandler(ListingRepository repository) {
         this.repository = repository;
     }
-
+    
+    @PutMapping("/{id}")
     public ListingEntity update(int id, UpdateListingRequest request) {
         return repository.findById(id)
             .map(listing -> {

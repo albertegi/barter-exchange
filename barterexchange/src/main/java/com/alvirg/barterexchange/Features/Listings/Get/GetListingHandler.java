@@ -4,7 +4,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.alvirg.barterexchange.Features.Listings.ListingEntity;
-import com.alvirg.barterexchange.Features.Listings.Create.ListingRepository;
+import com.alvirg.barterexchange.Features.Listings.ListingRepository;
 
 // Custom exception for resource not found
 @ResponseStatus(code = org.springframework.http.HttpStatus.NOT_FOUND)
@@ -17,6 +17,7 @@ class ResourceNotFoundException extends RuntimeException {
 @RestController
 @RequestMapping("/api/listings")
 public class GetListingHandler {
+    
     private final ListingRepository listingRepository;
 
     public GetListingHandler(ListingRepository listingRepository) {

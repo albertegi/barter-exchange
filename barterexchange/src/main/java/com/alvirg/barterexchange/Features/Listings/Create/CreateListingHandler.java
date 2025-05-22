@@ -3,6 +3,7 @@ package com.alvirg.barterexchange.Features.Listings.Create;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.alvirg.barterexchange.Features.Listings.ListingEntity;
+import com.alvirg.barterexchange.Features.Listings.ListingRepository;
 
 @RestController
 @RequestMapping("/api/listings")

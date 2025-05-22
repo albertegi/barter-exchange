@@ -14,7 +14,7 @@ public class CreateListingHandler {
 
     @PostMapping
     public String create(@RequestBody CreateListingRequest request) {
-        ListingEntity entity = new ListingEntity(
+        var entity = new ListingEntity(
             request.name,
             request.description,
             request.condition,

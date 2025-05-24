@@ -1,15 +1,12 @@
 package com.alvirg.barterexchange.Features.Users.create;
 
-import com.alvirg.barterexchange.Features.Listings.Create.CreateListingRequest;
-import com.alvirg.barterexchange.Features.Listings.ListingEntity;
-import com.alvirg.barterexchange.Features.Listings.ListingRepository;
 import com.alvirg.barterexchange.Features.Users.UserEntity;
 import com.alvirg.barterexchange.Features.Users.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
 @RequestMapping("/api/users")
 public class CreateUserHandler {
 
@@ -19,8 +16,10 @@ public class CreateUserHandler {
         this.userRepository = userRepository;
     }
 
+
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public String create(@RequestBody CreateUserRequest request) {
+    public void create(@Valid @RequestBody CreateUserRequest request) {
         var entity = new UserEntity(
 
                 request.getUsername(),
@@ -28,11 +27,9 @@ public class CreateUserHandler {
                 request.getPassword(),
                 request.getFullName(),
                 request.isActive()
-
         );
 
         userRepository.save(entity);
-        return "Listing created.";
     }
 
 }

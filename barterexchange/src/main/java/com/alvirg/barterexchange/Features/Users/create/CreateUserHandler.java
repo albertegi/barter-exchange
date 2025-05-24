@@ -20,7 +20,7 @@ public class CreateUserHandler {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public void create(@Valid @RequestBody CreateUserRequest request) {
-        var entity = new UserEntity(
+        var userEntity = new UserEntity(
 
                 request.getUsername(),
                 request.getEmail(),
@@ -29,7 +29,7 @@ public class CreateUserHandler {
                 request.isActive()
         );
 
-        userRepository.save(entity);
+        userRepository.save(userEntity);
     }
 
 }

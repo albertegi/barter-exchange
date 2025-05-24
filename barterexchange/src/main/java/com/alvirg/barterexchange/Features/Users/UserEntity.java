@@ -1,61 +1,56 @@
 package com.alvirg.barterexchange.Features.Users;
 
 import com.alvirg.barterexchange.Shared.Domain.BaseEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
+@Entity
+@Table(name = "users")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserEntity extends BaseEntity {
-    private String firstName;
-    private String lastName;
+
+    @NotBlank(message = "Username is required")
+    @Column(nullable = false, unique = true)
+    private String username;
+
+    @Email(message = "Email should be valid")
+    @NotBlank(message = "Email is required")
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @NotBlank(message = "Password is required")
     private String password;
 
-    public UserEntity(int id, String firstName, String lastName, String email, String password) {
+    private String fullName;
+
+    private boolean active;
+
+
+    @Builder
+    public UserEntity(int id,
+                      String username,
+                      String email,
+                      String password,
+                      String fullName,
+                      boolean active) {
         super(id);
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.username = username;
         this.email = email;
         this.password = password;
+        this.fullName = fullName;
+        this.active = active;
     }
 
-    public UserEntity(String firstName, String lastName, String email, String password) {
-        super();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-    }
 
-    public UserEntity() {
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
+

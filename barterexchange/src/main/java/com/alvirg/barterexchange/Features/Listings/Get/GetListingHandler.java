@@ -17,14 +17,14 @@ class ResourceNotFoundException extends RuntimeException {
 @RestController
 @RequestMapping("/api/listings")
 public class GetListingHandler {
-    
+
     private final ListingRepository listingRepository;
 
     public GetListingHandler(ListingRepository listingRepository) {
         this.listingRepository = listingRepository;
     }
 
-    @GetMapping
+    @GetMapping("")
     public ResponseEntity<List<ListingEntity>> getAllListings() {
         List<ListingEntity> listings = listingRepository.findAll();
         return ResponseEntity.ok(listings);
